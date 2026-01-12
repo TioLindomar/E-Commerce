@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 // import ClientLayout from './layouts/ClientLayout';
 import AuthLayout from "./layouts/AuthLayout";
 // import Home from './pages/client/Home';
@@ -7,7 +7,7 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Voltar para ClientLayout */}
         <Route element={<AuthLayout />}>
@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Route> */}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
