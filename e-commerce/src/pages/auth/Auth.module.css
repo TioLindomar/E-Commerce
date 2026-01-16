@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 450px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inputsWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1280px;
+}
+
+/* --- Classes Específicas de Login --- */
+.passwordArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.forgotPassword {
+  align-self: flex-end;
+}
+
+.createAccount {
+  align-self: center;
+}
+.hasAccount {
+  align-self: center;
+}
+
+/* *Media Queries
+
+/* Tablets */
+@media screen and (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Desktops */
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 500px;
+  }
+}

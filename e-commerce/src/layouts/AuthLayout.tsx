@@ -7,7 +7,7 @@ export default function AuthLayout() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
       }}
     >
       <Outlet />

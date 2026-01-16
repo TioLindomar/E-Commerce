@@ -8,6 +8,8 @@
   --primary-color: #000000;
   --secondary-color: #e0e0e0;
   --tertiary-color: #717171;
+  --correct: #2ECC71;
+  --incorrect: #E74C3C;
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -22,6 +24,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 .dark {
@@ -67,15 +70,35 @@ a:hover {
   color: var(--tertiary-color);
 }
 
-body {
+/* * Classes */
+
+/* Estilo para centralizar tudo */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
-  place-items: center;
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-/* * Classes */
+/* O desenho do círculo que gira */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--secondary-color);
+  border-bottom-color: var(--primary); /* Cor principal do seu site */
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s cubic-bezier(.17,.68,.83,.53) infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .btn {
   display: flex;
@@ -83,7 +106,7 @@ body {
   border-radius: var(--radius-lg);
   padding: 12px 16px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid var(--primary-color);
   cursor: pointer;
   flex-grow: 1;
@@ -104,6 +127,11 @@ body {
 .btn-secondary:hover {
   scale: 1.02;
   transition: 0.3s ease-in-out;
+}
+
+.btn.btn-disabled {
+  color: var(--tertiary-color);
+  cursor: default;
 }
 
 .input-wrapper {
@@ -164,8 +192,46 @@ body {
   box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
 }
 
+.input-wrapper.input-error .input {
+  border-color: var(--incorrect);
+  border-width: 3px;
+}
+
+
+
+/* .input-wrapper.input-error .icon-left {
+  color: var(--incorrect);
+} */
+
+.error-message {
+  color: var(--incorrect);
+  font-weight: 500;
+}
+
 .input::placeholder {
   color: var(--tertiary-color);
+}
+
+.toast {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--secondary-color) !important;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.toast-border-success {
+  border: 1px solid #07bc0c !important;
+  border-radius: 8px !important;
+}
+
+/* Borda para Toasts de Erro */
+.toast-border-error {
+  border: 1px solid #e74c3c !important;
+  border-radius: 8px !important;
+}
+
+/* Ajuste para o texto não ficar colado na borda */
+.Toastify__toast-body {
+  padding: 8px;
 }
 
 /* .input:focus {
