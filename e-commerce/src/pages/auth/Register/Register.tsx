@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import ThemeToggler from "../../../components/ThemeToggler";
@@ -24,6 +24,9 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const repeatedPasswordRef = useRef<HTMLInputElement>(null);
+
   // Lógica de validação visual por campo
   const nameError = attemptedSubmit && !name.trim();
   const emailError = attemptedSubmit && (!email.trim() || !email.includes("@"));
@@ -39,6 +42,18 @@ export default function Register() {
   const { login } = useAuth();
   const { theme } = useTheme();
 
+  // * Funções de mostrar e esconder senhas
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+    passwordRef.current?.focus();
+  };
+
+  const toggleRepeatedPassword = () => {
+    setShowRepeatedPassword(!showRepeatedPassword);
+    repeatedPasswordRef.current?.focus();
+  };
+
+  // * Mensagens de erro da senha
   const validationErrors: string[] = [];
 
   if (password.length > 0 && password.length < 6) {
@@ -141,11 +156,14 @@ export default function Register() {
               type={showPassword ? "text" : "password"}
               className="input has-left-icon has-right-icon"
               placeholder="Senha"
+              ref={passwordRef}
               onChange={(e) => setPassword(e.target.value)}
+              
             />
             <span
               className="material-symbols-outlined input-icon icon-right"
-              onClick={() => setShowPassword(!showPassword)}
+              onClick={togglePassword}
+              onMouseDown={(e) => e.preventDefault()}
             >
               {showPassword ? "visibility_off" : "visibility"}
             </span>
@@ -164,12 +182,14 @@ export default function Register() {
             <input
               type={showRepeatedPassword ? "text" : "password"}
               className="input has-left-icon has-right-icon"
+              ref={repeatedPasswordRef}
               placeholder="Repita a senha"
               onChange={(e) => setRepeatedPassword(e.target.value)}
             />
             <span
               className="material-symbols-outlined input-icon icon-right"
-              onClick={() => setShowRepeatedPassword(!showRepeatedPassword)}
+              onClick={toggleRepeatedPassword}
+              onMouseDown={(e) => e.preventDefault()}
             >
               {showRepeatedPassword ? "visibility_off" : "visibility"}
             </span>

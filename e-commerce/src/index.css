@@ -156,6 +156,11 @@ a:hover {
   color: var(--primary-color);
 }
 
+.input-wrapper:focus-visible .input-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: var(--primary-color);
+}
+
 .icon-left {
   left: 16px;
   pointer-events: none;
@@ -187,9 +192,10 @@ a:hover {
   padding-right: 48px;
 }
 
-.input:focus {
+.input:focus, .input:hover {
   border-color: var(--tertiary-color); /* Ou um tom mais escuro */
   box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+  transition: all 0.1s ease-in-out;
 }
 
 .input-wrapper.input-error .input {
@@ -234,19 +240,26 @@ a:hover {
   padding: 8px;
 }
 
-/* .input:focus {
-  border-width: 2px;
-} */
+/* * Media Queries */
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (max-width: 480px) {
+  .Toastify__toast-container {
+    width: calc(100% - 40px) !important; /* Dá uma margem de 20px de cada lado */
+    left: 20px !important;
+    right: 20px !important;
+    top: 20px !important;
+    margin: 0 auto;
   }
-  a:hover {
-    color: #747bff;
+
+  .Toastify__toast {
+    margin-bottom: 15px !important;
+    border-radius: 12px !important; /* Deixa ele redondinho já que agora flutua */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* Sombra para dar profundidade */
+    min-height: 50px !important;
   }
-  button {
-    background-color: #f9f9f9;
+
+  /* 3. Garante que o conteúdo interno não fique apertado */
+  .Toastify__toast-body {
+    padding: 10px 5px !important;
   }
-} */
+}

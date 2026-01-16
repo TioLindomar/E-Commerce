@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeToggler from "../../../components/ThemeToggler";
 import styles from "../Auth.module.css";
@@ -20,6 +20,13 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [serverError, setServerError] = useState(false);
+
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+    passwordRef.current?.focus();
+  };
 
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -95,6 +102,7 @@ export default function Login() {
                 lock
               </span>
               <input
+                ref={passwordRef}
                 type={showPassword ? "text" : "password"}
                 className="input has-left-icon has-right-icon"
                 placeholder="Senha"
@@ -106,7 +114,7 @@ export default function Login() {
 
               <span
                 className="material-symbols-outlined input-icon icon-right"
-                onClick={() => setShowPassword((prev) => !prev)}
+                onClick={togglePassword}
                 onMouseDown={(e) => e.preventDefault()}
               >
                 {showPassword ? "visibility_off" : "visibility"}
