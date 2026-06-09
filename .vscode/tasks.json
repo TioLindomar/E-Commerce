@@ -1,0 +1,41 @@
+// Cria uma task que abre dois terminais, um "Frontend" e outro "Backend", já inicializando os servidores
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "presentation": {
+        "panel": "new",
+        "reveal": "always"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Backend",
+      "type": "shell",
+      "command": "npm start",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "presentation": {
+        "panel": "new",
+        "reveal": "always"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Abrir Ambiente",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Frontend",
+        "Backend"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
