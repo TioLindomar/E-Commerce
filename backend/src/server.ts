@@ -7,7 +7,11 @@ const PORT = process.env.PORT || 3000;
 import { apiRoutes } from "./routes/api.routes.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 
-app.use(cors());
+app.use(
+	cors({
+		origin: process.env.FRONTEND_URL,
+	}),
+);
 app.use(express.json());
 app.use(apiRoutes);
 app.use(errorMiddleware);
