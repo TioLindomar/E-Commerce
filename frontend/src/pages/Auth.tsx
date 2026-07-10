@@ -1,15 +1,17 @@
 import { useState } from "react";
 import SignIn from "@/components/custom/SignIn";
 import SignUp from "@/components/custom/SignUp";
-import ThemeBtn from "@/components/custom/ThemeBtn";
+import { ThemeBtn } from "@/components/custom/ThemeToggle";
 
 function Auth() {
 	const [isSignUp, setIsSignUp] = useState(true);
 
 	return (
 		<>
-			<ThemeBtn />
-			<div
+			<div className="flex justify-end items-center p-4">
+				<ThemeBtn />
+			</div>
+			<main
 				id="center"
 				className="flex flex-col items-center justify-center gap-3 h-screen"
 			>
@@ -39,8 +41,7 @@ function Auth() {
 						</p>
 					)}
 				</div>
-				<ThemeBtn />
-			</div>
+			</main>
 		</>
 	);
 }

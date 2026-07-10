@@ -1,14 +1,22 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  // Implementação do Alias (shadcn)
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+	"files": [],
+	"references": [
+		{ "path": "./tsconfig.app.json" },
+		{ "path": "./tsconfig.node.json" }
+	],
+	// * Implementação do Alias (shadcn)
+	"compilerOptions": {
+		"baseUrl": ".",
+		// ! Segundo o VS Code, o "baseUrl" será desafasado no Typescript 7.0. Esta opção abaixo remove o aviso de erro
+		"ignoreDeprecations": "6.0",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		// ? Essas opções abaixo são as opções mais comumente utilizadas no typescript. Elas reforçam os pontos positivos do typescript (tipagem)
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"removeComments": true
+	}
 }

@@ -1,16 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router";
+import { HashRouter } from "react-router";
+import { Toaster } from "@/components/ui/sonner.tsx";
 import "./index.css";
 import App from "./App.tsx";
 
-// * Adicionando o tema escuro por padrão
-document.documentElement.classList.add("dark");
-
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<BrowserRouter>
+		<HashRouter>
 			<App />
-		</BrowserRouter>
+			<Toaster position="top-center" richColors />
+		</HashRouter>
 	</StrictMode>,
 );

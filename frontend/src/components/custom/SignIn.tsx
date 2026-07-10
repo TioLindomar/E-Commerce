@@ -7,6 +7,7 @@ import {
 	InputGroupInput,
 } from "@/components/ui/input-group";
 import { Field } from "@/components/ui/field";
+import { Link } from "react-router";
 
 export default function SignIn() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -55,8 +56,7 @@ export default function SignIn() {
 
 					{/* Botões de ação */}
 					<Field>
-						<Button>Criar conta</Button>
-						<Button variant={"outline"}>Criar com o Google</Button>
+						<Button><Link to={"/home"}>Entrar</Link></Button>
 					</Field>
 				</section>
 			</div>
