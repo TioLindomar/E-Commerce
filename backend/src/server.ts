@@ -7,9 +7,17 @@ const PORT = process.env.PORT || 3000;
 import { apiRoutes } from "./routes/api.routes.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 
+const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL];
+
 app.use(
 	cors({
-		origin: process.env.FRONTEND_URL,
+		origin: function (origin, callback) {
+			if (!origin || allowedOrigins.includes(origin)) {
+				callback(null, true);
+			} else {
+				callback(new Error("Bloqueado pela política de CORS"));
+			}
+		},
 	}),
 );
 app.use(express.json());
