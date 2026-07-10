@@ -2,7 +2,7 @@ import { api } from "./config/axios";
 import type {
 	CreateInstrumentDTO,
 	UpdateInstrumentDTO,
-} from "../types/dtos/instrument.dto";
+} from "../types/instruments.types";
 
 export const instrumentsApi = {
 	// * BUSCAR TODOS OS INSTRUMENTOS
