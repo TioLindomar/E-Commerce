@@ -119,31 +119,31 @@ export default function Home() {
 		}
 	}
 
-	// ! LISTAR PRODUTOS DIRETAMENTE DO BACKEND
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const response = await axios.get<Product[]>(
-				"http://localhost:3000/products",
-			);
-			// console.log("Produtos diretos do backend:", response.data);
-			setRoupas(response.data);
-		};
-		fetchProducts();
-	}, []);
+	// // ! LISTAR PRODUTOS DIRETAMENTE DO BACKEND
+	// useEffect(() => {
+	// 	const fetchProducts = async () => {
+	// 		const response = await axios.get<Product[]>(
+	// 			"http://localhost:3000/products",
+	// 		);
+	// 		// console.log("Produtos diretos do backend:", response.data);
+	// 		setRoupas(response.data);
+	// 	};
+	// 	fetchProducts();
+	// }, []);
 
-	// ! LISTAR PRODUTO ESPECÍFICO DIRETAMENTE DO BACKEND
-	useEffect(() => {
-		const fetchProduct = async () => {
-			try {
-				const response = await axios.get("http://localhost:3000/products/2");
-				// console.log("Produto específico direto do backend:", response);
-				setProduto(response.data);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchProduct();
-	}, []);
+	// // ! LISTAR PRODUTO ESPECÍFICO DIRETAMENTE DO BACKEND
+	// useEffect(() => {
+	// 	const fetchProduct = async () => {
+	// 		try {
+	// 			const response = await axios.get("http://localhost:3000/products/2");
+	// 			// console.log("Produto específico direto do backend:", response);
+	// 			setProduto(response.data);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	};
+	// 	fetchProduct();
+	// }, []);
 
 	return (
 		<main className="flex flex-col items-center justify-center h-screen gap-6">

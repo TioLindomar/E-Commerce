@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import type {
 	CreateInstrumentDTO,
 	UpdateInstrumentDTO,
-} from "@/types/dtos/instrument.dto";
+	Instrument,
+} from "@/types/instruments.types";
 import { instrumentsApi } from "@/api/instruments.api";
-import type { Instrument } from "@/types/entities";
 
 export function useInstruments() {
 	const [instrument, setInstrument] = useState<Instrument>();
