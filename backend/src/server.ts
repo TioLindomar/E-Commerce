@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 import { apiRoutes } from "./routes/api.routes.js";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
@@ -61,8 +61,6 @@ app.get("/products/:id", (req, res) => {
 	res.json(requestedProduct);
 });
 
-app.get("/instruments");
-
-app.listen(port, () => {
-	console.log(`Servidor rodando na porta ${port}`);
+app.listen(PORT, () => {
+	console.log(`Servidor rodando na porta ${PORT}`);
 });
