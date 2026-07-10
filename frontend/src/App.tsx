@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import MainLayout from "./layouts/MainLayouts";
 import { ThemeProvider } from "./theme/theme-provider";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
 	return (
@@ -17,6 +18,8 @@ function App() {
 
 				<Route path="/auth" element={<Auth />} />
 			</Routes>
+			<Toaster position="top-center" richColors/>
+
 		</ThemeProvider>
 	);
 }
