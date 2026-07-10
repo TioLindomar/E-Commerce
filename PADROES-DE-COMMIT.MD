@@ -2,6 +2,7 @@
 
 Este documento descreve as convenções de prefixos para mensagens de commit no projeto.
 
+- **add**: Commit genérico para quando houveram muitas modificações/adições, inviabilizando o uso de apenas um outro prefixo.
 - **feat**: Adição de funcionalidade.
 - **fix**: Correção de bug.
 - **refactor**: Melhoria ou modificação na estrutura.

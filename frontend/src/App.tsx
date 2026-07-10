@@ -1,19 +1,24 @@
 import { Route, Routes } from "react-router";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
-import NavBar from "./components/custom/NavBar";
+import Products from "./pages/Products";
+import MainLayout from "./layouts/MainLayouts";
+import { ThemeProvider } from "./theme/theme-provider";
 
 function App() {
 	return (
-		<main className="lg:px-16 px-4">
-			<NavBar />
+		// ? Renderização condicional de elementos: na rota "auth" alguns elementos não são renderizados, que no caso são a NavBar e o Footer
+		<ThemeProvider>
 			<Routes>
+				<Route element={<MainLayout />}>
+					<Route path="/" element={<Products />} />
+					<Route path="/home" element={<Home />} />
+				</Route>
+
 				<Route path="/auth" element={<Auth />} />
-				<Route path="/" element={<Home />} />
 			</Routes>
-		</main>
+		</ThemeProvider>
 	);
 }
 
 export default App;
-
