@@ -4,9 +4,7 @@
 @import "@fontsource-variable/figtree";
 @import "@fontsource-variable/inter";
 
-/* @custom-variant dark (&:is(.dark *)); */
-/* ! Definindo que o tema padrão será o escuro */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: oklch(1 0 0);
@@ -139,9 +137,9 @@
 }
 
 @theme inline {
-  --font-sans: "Figtree Variable", sans-serif;
+  --font-sans: 'Inter Variable', sans-serif;
 
-  --font-heading: "Inter Variable", sans-serif;
+  --font-heading: 'Figtree Variable', sans-serif;
 
   --color-sidebar-ring: var(--sidebar-ring);
 
@@ -233,5 +231,8 @@
   /* Adicionando a fonte de Headers (Inter) às tags de cabeçalho */
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }

@@ -1,18 +1,9 @@
 import { LogOut, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Field } from "../ui/field";
-import {
-	InputGroup,
-	InputGroupAddon,
-	InputGroupInput,
-} from "../ui/input-group";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "../ui/input-group";
 import { Button } from "../ui/button";
-import { ThemeBtn, ThemeDropdown } from "./ThemeToggle";
-import {
-	Drawer,
-	DrawerContent,
-	DrawerHeader,
-	DrawerTrigger,
-} from "@/components/ui/drawer";
+import { ThemeBtn } from "./ThemeToggle";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from "@/components/ui/drawer";
 import { useWindowWidth } from "@/hooks/utils/useWindowSize";
 import { Separator } from "../ui/separator";
 import { Link } from "react-router";
@@ -42,6 +33,12 @@ export default function NavBar() {
 							className="text-sm hover:text-foreground hover:underline underline-offset-2"
 						>
 							Produtos
+						</Link>
+						<Link
+							to={"/product"}
+							className="text-sm hover:text-foreground hover:underline underline-offset-2"
+						>
+							Add Produto
 						</Link>
 						<Link
 							to={"/"}
@@ -86,7 +83,12 @@ export default function NavBar() {
 							>
 								Produtos
 							</Link>
-
+							<Link
+								to={"/product"}
+								className="text-sm hover:text-foreground hover:underline underline-offset-2"
+							>
+								Add Produto
+							</Link>
 							<Link
 								to={"/"}
 								className="px-2 py-1 text-base rounded-sm hover:text-foreground hover:bg-accent"

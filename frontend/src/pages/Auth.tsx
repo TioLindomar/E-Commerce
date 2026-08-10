@@ -3,7 +3,7 @@ import SignIn from "@/components/custom/SignIn";
 import SignUp from "@/components/custom/SignUp";
 import { ThemeBtn } from "@/components/custom/ThemeToggle";
 
-function Auth() {
+export default function Auth() {
 	const [isSignUp, setIsSignUp] = useState(true);
 
 	return (
@@ -45,5 +45,3 @@ function Auth() {
 		</>
 	);
 }
-
-export default Auth;

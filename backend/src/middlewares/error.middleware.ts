@@ -1,17 +1,16 @@
 // TODO | INTERPRETAR ESTE CÓDIGO
-// Classe de erro
+// * Classe de erro
 export class AppError extends Error {
 	constructor(
 		public message: string,
 		public status: number,
 	) {
 		super(message);
-
 		this.name = "AppError";
 	}
 }
 
-// Middleware de erro
+// * Middleware de erro
 import type { Request, Response, NextFunction } from "express";
 
 export function errorMiddleware(

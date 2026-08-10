@@ -1,47 +1,32 @@
 {
-	// Visit https://aka.ms/tsconfig to read more about this file
-	"compilerOptions": {
-		// File Layout
-		"rootDir": "./src",
-		"outDir": "./dist",
-		"moduleResolution": "nodenext",
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "moduleResolution": "nodenext",
+        "module": "nodenext",
+        "target": "esnext",
+        "types": ["node"],
+        
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
 
-		// Environment Settings
-		// See also https://aka.ms/tsconfig/module
-		"module": "nodenext",
-		"target": "esnext",
-		"types": ["node"],
-		"esModuleInterop": true,
-		// For nodejs:
-		// "lib": ["esnext"],
-		// "types": ["node"],
-		// and npm install -D @types/node
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitReturns": true,
 
-		// Other Outputs
-		"sourceMap": true,
-		"declaration": true,
-		"declarationMap": true,
+        "verbatimModuleSyntax": true,
+        "noUncheckedSideEffectImports": true,
+        "moduleDetection": "force",
 
-		// Stricter Typechecking Options
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
 
-		// Style Options
-		// "noImplicitReturns": true,
-		// "noImplicitOverride": true,
-		"noUnusedLocals": true,
-		"removeComments": true,
-		// "noUnusedParameters": true,
-		// "noFallthroughCasesInSwitch": true,
-		// "noPropertyAccessFromIndexSignature": true,
+        "noUnusedParameters": false,
 
-		// Recommended Options
-		"strict": true,
-		"jsx": "react-jsx",
-		"verbatimModuleSyntax": true,
-		"isolatedModules": true,
-		"noUncheckedSideEffectImports": true,
-		"moduleDetection": "force",
-		"skipLibCheck": true
-	}
+        "paths": {
+            "@/*": ["./*"]
+        }
+    }
 }

@@ -6,15 +6,14 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTheme } from "@/theme/useTheme";
+import { useThemeStore } from "@/context/themeStore";
 
 function ThemeBtn() {
-	const { theme, setTheme } = useTheme();
+	const theme = useThemeStore((state) => state.theme);
+	const setTheme = useThemeStore((state) => state.setTheme);
 
 	// Descobre qual é a preferência do sistema do usuário
-	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-		? "dark"
-		: "light";
+	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 	// Resolve qual tema está visível agora na tela.
 	const currentTheme = theme === "system" ? systemTheme : theme;
@@ -38,27 +37,23 @@ function ThemeBtn() {
 }
 
 function ThemeDropdown() {
-	const { setTheme } = useTheme();
+	const setTheme = useThemeStore((state) => state.setTheme);
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button variant="outline" size="icon">
-					<Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-					<Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-					<span className="sr-only">Toggle theme</span>
-				</Button>
-			</DropdownMenuTrigger>
+			<DropdownMenuTrigger
+				render={
+					<Button variant="outline" size="icon">
+						<Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+						<Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+						<span className="sr-only">Toggle theme</span>
+					</Button>
+				}
+			></DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
-				<DropdownMenuItem onClick={() => setTheme("light")}>
-					Light
-				</DropdownMenuItem>
-				<DropdownMenuItem onClick={() => setTheme("dark")}>
-					Dark
-				</DropdownMenuItem>
-				<DropdownMenuItem onClick={() => setTheme("system")}>
-					System
-				</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

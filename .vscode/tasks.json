@@ -1,41 +1,45 @@
-// Cria uma task que abre dois terminais, um "Frontend" e outro "Backend", já inicializando os servidores
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Frontend",
-      "type": "shell",
-      "command": "npm run dev",
-      "options": {
-        "cwd": "${workspaceFolder}/frontend"
-      },
-      "presentation": {
-        "panel": "new",
-        "reveal": "always"
-      },
-      "isBackground": true
-    },
-    {
-      "label": "Backend",
-      "type": "shell",
-      "command": "npm start",
-      "options": {
-        "cwd": "${workspaceFolder}/backend"
-      },
-      "presentation": {
-        "panel": "new",
-        "reveal": "always"
-      },
-      "isBackground": true
-    },
-    {
-      "label": "Abrir Ambiente",
-      "dependsOrder": "parallel",
-      "dependsOn": [
-        "Frontend",
-        "Backend"
-      ],
-      "problemMatcher": []
-    }
-  ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Backend",
+			"type": "shell",
+			"command": "pnpm dev",
+			"options": {
+				"cwd": "${workspaceFolder}/backend"
+			},
+			"icon": {
+				"id": "server",
+				"color": "terminal.ansiRed"
+			},
+			"presentation": {
+				"panel": "new",
+				"reveal": "always"
+			},
+			"isBackground": true
+		},
+		{
+			"label": "Frontend",
+			"type": "shell",
+			"command": "pnpm dev",
+			"options": {
+				"cwd": "${workspaceFolder}/frontend"
+			},
+			"icon": {
+				"id": "layout",
+				"color": "terminal.ansiYellow"
+			},
+			"presentation": {
+				"panel": "new",
+				"reveal": "always"
+			},
+			"isBackground": true
+		},
+		{
+			"label": "Iniciar Servidores",
+			"dependsOn": ["Frontend", "Backend"],
+			"dependsOrder": "parallel",
+			"problemMatcher": []
+		}
+	]
 }

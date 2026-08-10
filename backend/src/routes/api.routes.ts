@@ -1,16 +1,22 @@
-// ? Roteamento GLOBAL das requisiçoes: quando uma requisição é feita num certo endpoint (Ex: http://localhost:3000/instruments), o arquivo router determina o que será executado com base no método da requisição (GET, POST, DELETE etc)
-
 import { Router, type Request, type Response } from "express";
-import { instrumentsRoutes } from "./instrument.routes.js";
+import { orderItemsRoutes } from "./order_items.routes.js";
+import { ordersRoutes } from "./orders.routes.js";
+import { productsRoutes } from "./products.routes.js";
+import { userAdressesRoutes } from "./user_adresses.routes.js";
+import { usersRoutes } from "./users.routes.js";
 
-const router = Router();
+const router: Router = Router();
 
-// * Rota Pública (não precisa de Auth)
+// * Rota Pública
 router.get("/", (req: Request, res: Response) => {
 	res.json({ system: "E-Commerce API", status: "online" });
 });
 
 // * Rotas de Instrumentos
-router.use("/instruments", instrumentsRoutes);
+router.use("/users", usersRoutes);
+router.use("/products", productsRoutes);
+router.use("/orders", ordersRoutes);
+router.use("/order_items", orderItemsRoutes);
+router.use("/user_adresses", userAdressesRoutes);
 
 export { router as apiRoutes };
